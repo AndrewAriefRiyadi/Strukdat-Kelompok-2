@@ -21,6 +21,7 @@ class LinkedList:
         self.first = None
         self.len = 0
 
+
     def printList(self):
         temp = self.first
         while (temp):
@@ -109,16 +110,18 @@ class LinkedList:
 
     def removeDup(self):
         temp1 = self.first
-        dupval= None
+        index1 = 0
+        index2= index1+1
         while(temp1):
             temp2 = temp1.next
             while(temp2):
                 if(temp1.getValue() == temp2.getValue()):
-                    dupval = temp1.getValue()
+                    self.remove(index2)
                 temp2 = temp2.next
+                index2 += 1
             temp1 = temp1.next
-            if (dupval):
-                self.removeValue(dupval)
+            index1 += 1
+            index2 = index1+1
 
     def tailToFront(self):
         self.swap(0,self.len-1)
@@ -133,8 +136,12 @@ if __name__ == '__main__':
     list.add(28)
     list.add(13)
     list.add(7)
+    list.add(23)
     list.printList()
-    list.removeValue(7)
+    list.removeValue(2)
+    list.printList()
+    list.removeDup()
+    list.printList()
     list.tailToFront()
     list.printList()
 
